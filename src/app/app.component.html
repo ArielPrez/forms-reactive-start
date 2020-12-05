@@ -13,7 +13,12 @@
               class="form-control">
             <span class="help-block"
               *ngIf="!signUpForm.get('userData.username').valid && signUpForm.get('userData.username').touched">
-              Please enter a valid Username.
+              <span *ngIf="signUpForm.get('userData.username').errors['nameIsForbidden']">
+                Please enter a valid Username.
+              </span>
+              <span *ngIf="signUpForm.get('userData.username').errors['required']">
+                This field is required!
+              </span>
             </span>
           </div>
 
@@ -49,6 +54,15 @@
           <div class="form-group"
               *ngFor="let hobby of hobbies.controls; let i = index">
               <input type="text" class="form-control" [formControlName]="i">
+              <span class="help-block"
+                *ngIf="!signUpForm.get('hobbies').valid && signUpForm.get('hobbies').touched">
+                <button class="btn btn-danger"
+                      type="button"
+                      (click)="deleteHobby()">
+                  Delete
+                </button>
+                Please enter a hobby or delete the option.
+              </span>
           </div>
           <button class="btn btn-secondary"
                 type="button"
