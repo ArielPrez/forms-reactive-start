@@ -29,10 +29,13 @@
               id="email"
               formControlName="email"
               class="form-control">
-            <span class="help-block"
-                  *ngIf="!signUpForm.get('userData.email').valid && signUpForm.get('userData.email').touched">
+            <label *ngIf="signUpForm.get('userData.email').pending">
+              Checking email...
+            </label>
+            <label class="help-block"
+                  *ngIf="!signUpForm.get('userData.email').valid && signUpForm.get('userData.email').touched && !signUpForm.get('userData.email').pending">
               Please enter a valid email.
-            </span>
+            </label>
           </div>
         </div>
 

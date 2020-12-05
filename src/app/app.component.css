@@ -10,3 +10,7 @@ input.ng-pristine.ng-untouched{
 input.ng-valid{
   border: solid 1px green;
 }
+input.ng-pending{
+  /* border-color: chocolate; */
+  border-bottom: solid 3px chocolate;
+}
